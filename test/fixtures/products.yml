@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_product: 1
+  nom_product: MyString
+  estado: MyString
+
+two:
+  cod_product: 1
+  nom_product: MyString
+  estado: MyString

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_song: 1
+  nom_song: MyString
+  artista_song: MyString
+  genero_song: MyString
+  anio_song: 2016-09-16 04:45:50
+  estado: MyString
+
+two:
+  cod_song: 1
+  nom_song: MyString
+  artista_song: MyString
+  genero_song: MyString
+  anio_song: 2016-09-16 04:45:50
+  estado: MyString
