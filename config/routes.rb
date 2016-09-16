@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :songs
   resources :products
   resources :shops
   root 'shops#index'
