@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :clients
   resources :songs
   resources :products
   resources :shops
-  root 'shops#index'
+  get 'welcome/homepage'
+  #root 'shops#index'
+  root 'welcome#homepage'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Shops</h1>
+<h1>Mantenimiento de Locales y Salas</h1>
 
-<table>
+<table border="1" width="70%">
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Telephone</th>
-      <th>Email</th>
-      <th>Description</th>
-      <th>Admin</th>
-      <th colspan="3"></th>
+      <th>C&oacute;digo</th>
+      <th>Nombre</th>
+      <th>Direcci&oacute;n</th>
+      <th>Tel&eacute;fono</th>
+      <th>Correo</th>
+      <th>Descripci&oacute;</th>
+      <th>Administrador</th>
+      <th>Opciones</th>
     </tr>
   </thead>
 
@@ -26,9 +26,7 @@
         <td><%= shop.email %></td>
         <td><%= shop.description %></td>
         <td><%= shop.admin %></td>
-        <td><%= link_to 'Show', shop %></td>
-        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', shop %> |&nbsp; <%= link_to 'Editar', edit_shop_path(shop) %> |&nbsp; <%= link_to 'Eliminar', shop, method: :delete, data: { confirm: 'Are you sure?' } %> |&nbsp; <%= link_to 'Ver Salas', edit_shop_path(shop) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Shop', new_shop_path %>
+<%= link_to 'Nuevo Local', new_shop_path %> |&nbsp;
+<%= link_to "Menú Principal", welcome_homepage_path  %>
+
