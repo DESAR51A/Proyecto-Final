@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916060021) do
+ActiveRecord::Schema.define(version: 20160916225027) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20160916060021) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "cod_room",   limit: 4
+    t.string   "nom_room",   limit: 255
+    t.string   "estado",     limit: 255
+    t.string   "capacidad",  limit: 255
+    t.integer  "shop_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "rooms", ["shop_id"], name: "index_rooms_on_shop_id", using: :btree
 
   create_table "shops", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -54,4 +66,5 @@ ActiveRecord::Schema.define(version: 20160916060021) do
     t.datetime "updated_at",               null: false
   end
 
+  add_foreign_key "rooms", "shops"
 end
