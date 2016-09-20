@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'costumers', controller: :costumers, action: :home, alias: 'costumers'
+
   resources :rooms
   resources :clients
   resources :songs
