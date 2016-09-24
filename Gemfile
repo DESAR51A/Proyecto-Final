@@ -22,7 +22,31 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec bun doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Comentarios atributos modelos
 gem 'annotate'
+
+# Bootstrap
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
+# Simplified Form Management
+gem 'simple_form'
+# Authentication Support
+gem 'devise'
+gem 'devise-bootstrap-views'
+# Admin Section Support
+gem 'rails_admin'
+
+# Attachments Support
+gem 'paperclip', '~> 4.3'
+
+# Grillas y paginación
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
