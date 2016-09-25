@@ -2,7 +2,12 @@
 
 <h1>Mantenimiento de Productos</h1>
 
-<table id="products">
+<br>
+<%= link_to 'Nuevo Producto', new_product_path, :class => "btn btn-success" %>
+<br>
+<br>
+
+<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
       <th>C&oacute;digo</th>
@@ -24,7 +29,6 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'Nuevo Producto', new_product_path %> |&nbsp;
-<%= link_to "Menú Principal", welcome_homepage_path  %>
+
+

@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec bun doc:rails generates the API under doc/api.
@@ -43,7 +43,7 @@ gem 'rails_admin'
 gem 'paperclip', '~> 4.3'
 
 # Grillas y paginación
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 
 
