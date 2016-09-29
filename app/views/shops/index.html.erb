@@ -1,24 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Mantenimiento de Locales y Salas</h1>
-
-<table border="1" width="70%">
+<%- model_class = Shop -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>C&oacute;digo</th>
-      <th>Nombre</th>
-      <th>Direcci&oacute;n</th>
-      <th>Tel&eacute;fono</th>
-      <th>Correo</th>
-      <th>Descripci&oacute;</th>
-      <th>Administrador</th>
-      <th>Opciones</th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:code) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:telephone) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:admin) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
+        <td><%= link_to shop.id, shop_path(shop) %></td>
         <td><%= shop.code %></td>
         <td><%= shop.name %></td>
         <td><%= shop.address %></td>
@@ -26,14 +28,21 @@
         <td><%= shop.email %></td>
         <td><%= shop.description %></td>
         <td><%= shop.admin %></td>
-        <td><%= link_to 'Ver', shop %> |&nbsp; <%= link_to 'Editar', edit_shop_path(shop) %> |&nbsp; <%= link_to 'Eliminar', shop, method: :delete, data: { confirm: 'Are you sure?' } %> |&nbsp; <%= link_to 'Ver Salas', edit_shop_path(shop) %></td>
+        <td><%=l shop.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_shop_path(shop), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      shop_path(shop),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Nuevo Local', new_shop_path %> |&nbsp;
-<%= link_to "Menú Principal", welcome_homepage_path  %>
-
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_shop_path,
+            :class => 'btn btn-primary' %>

@@ -1,33 +1,27 @@
-<%- model_class = Product -%>
+<%- model_class = Singer -%>
 <div class="page-header">
-  
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<%= link_to t('.new', :default => t("helpers.links.new")), new_product_path, :class => 'btn btn-success' %>
-<table id="datatable" class="table table-striped">
+<table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:cod_product) %></th>
-      <th><%= model_class.human_attribute_name(:nom_product) %></th>
-      <th><%= model_class.human_attribute_name(:estado) %></th>
+      <th><%= model_class.human_attribute_name(:nom_singer) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @products.each do |product| %>
+    <% @singers.each do |singer| %>
       <tr>
-        <td><%= link_to product.id, product_path(product) %></td>
-        <td><%= product.cod_product %></td>
-        <td><%= product.nom_product %></td>
-        <td><%= product.estado %></td>
-        <td><%=l product.created_at %></td>
+        <td><%= link_to singer.id, singer_path(singer) %></td>
+        <td><%= singer.nom_singer %></td>
+        <td><%=l singer.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_product_path(product), :class => 'btn btn-default btn-xs' %>
+                      edit_singer_path(singer), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      product_path(product),
+                      singer_path(singer),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -37,4 +31,6 @@
   </tbody>
 </table>
 
-
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_singer_path,
+            :class => 'btn btn-primary' %>

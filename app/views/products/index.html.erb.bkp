@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mantenimiento de Productos</h1>
+
+<br>
+<%= link_to 'Nuevo Producto', new_product_path, :class => "btn btn-success" %>
+<br>
+<br>
+
+<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>C&oacute;digo</th>
+      <th>Nombre</th>
+      <th>Estado</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.cod_product %></td>
+        <td><%= product.nom_product %></td>
+        <td><%= product.estado %></td>
+        <td><%= link_to 'Ver', product %> |&nbsp; <%= link_to 'Editar', edit_product_path(product) %> |&nbsp; <%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+

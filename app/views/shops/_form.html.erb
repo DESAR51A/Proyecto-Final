@@ -1,45 +1,20 @@
-<%= form_for(@shop) do |f| %>
-  <% if @shop.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+<%= simple_form_for @shop, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :code %>
+  <%= error_span(@shop[:code]) %>
+  <%= f.input :name %>
+  <%= error_span(@shop[:name]) %>
+  <%= f.input :address %>
+  <%= error_span(@shop[:address]) %>
+  <%= f.input :telephone %>
+  <%= error_span(@shop[:telephone]) %>
+  <%= f.input :email %>
+  <%= error_span(@shop[:email]) %>
+  <%= f.input :description %>
+  <%= error_span(@shop[:description]) %>
+  <%= f.input :admin %>
+  <%= error_span(@shop[:admin]) %>
 
-      <ul>
-      <% @shop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.text_field :telephone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.text_field :admin %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                shops_path, :class => 'btn btn-default' %>
 <% end %>
