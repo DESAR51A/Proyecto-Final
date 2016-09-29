@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160929044950) do
-=======
-ActiveRecord::Schema.define(version: 20160929032654) do
->>>>>>> be874b90507fae1d50b089cdf933a2f3a8d1df3f
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -36,16 +32,14 @@ ActiveRecord::Schema.define(version: 20160929032654) do
     t.string   "last_sign_in_ip",        limit: 255
   end
 
-<<<<<<< HEAD
   add_index "clients", ["email"], name: "index_clients_on_email", unique: true, using: :btree
   add_index "clients", ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true, using: :btree
-=======
+
   create_table "genres", force: :cascade do |t|
     t.string   "des_genre",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
->>>>>>> be874b90507fae1d50b089cdf933a2f3a8d1df3f
 
   create_table "products", force: :cascade do |t|
     t.integer  "cod_product", limit: 4
@@ -85,8 +79,6 @@ ActiveRecord::Schema.define(version: 20160929032654) do
     t.datetime "updated_at",             null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "songs", force: :cascade do |t|
     t.string   "nom_song",   limit: 255
     t.decimal  "duracion",               precision: 10
@@ -100,7 +92,6 @@ ActiveRecord::Schema.define(version: 20160929032654) do
   add_index "songs", ["genre_id"], name: "index_songs_on_genre_id", using: :btree
   add_index "songs", ["singer_id"], name: "index_songs_on_singer_id", using: :btree
 
->>>>>>> be874b90507fae1d50b089cdf933a2f3a8d1df3f
   add_foreign_key "rooms", "shops"
   add_foreign_key "songs", "genres"
   add_foreign_key "songs", "singers"

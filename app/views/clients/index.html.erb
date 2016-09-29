@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:dni) %></th>
-      <th><%= model_class.human_attribute_name(:mail) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:birth) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -21,7 +21,7 @@
         <td><%= link_to client.id, client_path(client) %></td>
         <td><%= client.name %></td>
         <td><%= client.dni %></td>
-        <td><%= client.mail %></td>
+        <td><%= client.email %></td>
         <td><%= client.birth %></td>
         <td><%= client.phone %></td>
         <td><%=l client.created_at %></td>
