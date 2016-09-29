@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :clients
   get 'costumers', controller: :costumers, action: :home, alias: 'costumers'
   get 'eventos', controller: :costumers, action: :eventos, alias: 'eventos'
   get 'locales', controller: :costumers, action: :locales, alias: 'locales'
