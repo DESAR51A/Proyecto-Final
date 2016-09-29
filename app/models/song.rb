@@ -1,17 +1,17 @@
-# == Schema Information
-#
-# Table name: songs
-#
-#  id           :integer          not null, primary key
-#  cod_song     :integer
-#  nom_song     :string(255)
-#  artista_song :string(255)
-#  genero_song  :string(255)
-#  anio_song    :datetime
-#  estado       :string(255)
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
-
 class Song < ActiveRecord::Base
+  belongs_to :singer
+  belongs_to :genre
+  
+  def singer_name    
+    self.singer.name  
+  end
+      
+  def genre_name    
+    self.genre.name  
+  end
+  
+  validates :singer, presence: true 
+  validates :genre, presence: true 
+  validates :nom_song, presence: true, 
+                    uniqueness: {case_sensitive: false}
 end

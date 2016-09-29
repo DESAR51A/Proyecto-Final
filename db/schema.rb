@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924222354) do
+ActiveRecord::Schema.define(version: 20160929032654) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20160924222354) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string   "des_genre",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer  "cod_product", limit: 4
     t.string   "nom_product", limit: 255
@@ -30,17 +36,6 @@ ActiveRecord::Schema.define(version: 20160924222354) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.datetime "born_at"
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "cod_room",   limit: 4
@@ -66,36 +61,26 @@ ActiveRecord::Schema.define(version: 20160924222354) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "singers", force: :cascade do |t|
+    t.string   "nom_singer", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "songs", force: :cascade do |t|
-    t.integer  "cod_song",     limit: 4
-    t.string   "nom_song",     limit: 255
-    t.string   "artista_song", limit: 255
-    t.string   "genero_song",  limit: 255
-    t.datetime "anio_song"
-    t.string   "estado",       limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "nom_song",   limit: 255
+    t.decimal  "duracion",               precision: 10
+    t.integer  "anio_song",  limit: 4
+    t.integer  "singer_id",  limit: 4
+    t.integer  "genre_id",   limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.integer  "role",                   limit: 4
-  end
+  add_index "songs", ["genre_id"], name: "index_songs_on_genre_id", using: :btree
+  add_index "songs", ["singer_id"], name: "index_songs_on_singer_id", using: :btree
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  add_foreign_key "profiles", "users"
   add_foreign_key "rooms", "shops"
+  add_foreign_key "songs", "genres"
+  add_foreign_key "songs", "singers"
 end

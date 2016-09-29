@@ -1,0 +1,8 @@
+<%= simple_form_for @genre, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :des_genre %>
+  <%= error_span(@genre[:des_genre]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                genres_path, :class => 'btn btn-default' %>
+<% end %>

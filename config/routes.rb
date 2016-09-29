@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :songs
+  resources :genres
+  resources :singers
   get 'costumers', controller: :costumers, action: :home, alias: 'costumers'
   get 'eventos', controller: :costumers, action: :eventos, alias: 'eventos'
   get 'locales', controller: :costumers, action: :locales, alias: 'locales'
@@ -6,7 +9,6 @@ Rails.application.routes.draw do
   
   resources :rooms
   resources :clients
-  resources :songs
   resources :products
   resources :shops
   get 'welcome/homepage'

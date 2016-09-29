@@ -18,7 +18,7 @@ class SongsControllerTest < ActionController::TestCase
 
   test "should create song" do
     assert_difference('Song.count') do
-      post :create, song: { anio_song: @song.anio_song, artista_song: @song.artista_song, cod_song: @song.cod_song, estado: @song.estado, genero_song: @song.genero_song, nom_song: @song.nom_song }
+      post :create, song: { anio_song: @song.anio_song, duracion: @song.duracion, genre_id: @song.genre_id, nom_song: @song.nom_song, singer_id: @song.singer_id }
     end
 
     assert_redirected_to song_path(assigns(:song))
@@ -35,7 +35,7 @@ class SongsControllerTest < ActionController::TestCase
   end
 
   test "should update song" do
-    patch :update, id: @song, song: { anio_song: @song.anio_song, artista_song: @song.artista_song, cod_song: @song.cod_song, estado: @song.estado, genero_song: @song.genero_song, nom_song: @song.nom_song }
+    patch :update, id: @song, song: { anio_song: @song.anio_song, duracion: @song.duracion, genre_id: @song.genre_id, nom_song: @song.nom_song, singer_id: @song.singer_id }
     assert_redirected_to song_path(assigns(:song))
   end
 
