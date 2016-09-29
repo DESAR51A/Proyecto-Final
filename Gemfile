@@ -29,7 +29,7 @@ gem 'annotate'
 # Bootstrap
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '>= 3.2.0', '< 3.2.2'
 
 # Simplified Form Management
 gem 'simple_form'
