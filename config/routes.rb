@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :employees
   resources :employee_roles
   resources :songs
