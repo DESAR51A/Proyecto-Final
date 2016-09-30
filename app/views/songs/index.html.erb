@@ -1,8 +1,13 @@
 <%- model_class = Song -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => "Canciones" %></h1>
 </div>
-<table class="table table-striped">
+
+<%= link_to t('.new', :default => "Agregar"), new_song_path, :class => 'btn btn-primary' %>
+<br>
+<br>
+
+<table id="datatable" class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -39,6 +44,4 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_song_path,
-            :class => 'btn btn-primary' %>
+
