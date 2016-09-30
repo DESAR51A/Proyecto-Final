@@ -1,9 +1,9 @@
 # == Schema Information
 #
-# Table name: genres
+# Table name: employee_roles
 #
 #  id         :integer          not null, primary key
-#  des_genre  :string(255)
+#  nom_rol    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -11,7 +11,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  des_genre: MyString
+  nom_rol: MyString
 
 two:
-  des_genre: MyString
+  nom_rol: MyString

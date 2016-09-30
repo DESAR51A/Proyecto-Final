@@ -1,14 +1,18 @@
 # == Schema Information
 #
-# Table name: genres
+# Table name: employee_roles
 #
 #  id         :integer          not null, primary key
-#  des_genre  :string(255)
+#  nom_rol    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Genre < ActiveRecord::Base
-    has_many :songs
-    has_many :singers, through: :songs
+class EmployeeRole < ActiveRecord::Base
+    has_many :employees
+    
+    def to_s
+     self.nom_rol
+    end
+
 end

@@ -1,8 +1,13 @@
 <%- model_class = Shop -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Locales</h1>
 </div>
-<table class="table table-striped">
+
+<%= link_to t('.new', :default => "Agregar"), new_shop_path, :class => 'btn btn-primary' %>
+<br>
+<br>
+
+<table id="datatable" class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -12,7 +17,7 @@
       <th><%= model_class.human_attribute_name(:telephone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:admin) %></th>
+      <th>Administrador</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -27,7 +32,7 @@
         <td><%= shop.telephone %></td>
         <td><%= shop.email %></td>
         <td><%= shop.description %></td>
-        <td><%= shop.admin %></td>
+        <td><%= shop.admin_name %></td>
         <td><%=l shop.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -42,7 +47,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_shop_path,
-            :class => 'btn btn-primary' %>

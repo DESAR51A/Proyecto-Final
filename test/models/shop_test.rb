@@ -9,9 +9,9 @@
 #  telephone   :string(255)
 #  email       :string(255)
 #  description :string(255)
-#  admin       :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  employee_id :integer
 #
 
 require 'test_helper'

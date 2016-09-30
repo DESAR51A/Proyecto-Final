@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929044950) do
+ActiveRecord::Schema.define(version: 20160930143124) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 20160929044950) do
 
   add_index "clients", ["email"], name: "index_clients_on_email", unique: true, using: :btree
   add_index "clients", ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true, using: :btree
+
+  create_table "employee_roles", force: :cascade do |t|
+    t.string   "nom_rol",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "nom_emp",          limit: 255
+    t.integer  "dni",              limit: 4
+    t.integer  "phone",            limit: 4
+    t.integer  "employee_role_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "employees", ["employee_role_id"], name: "index_employees_on_employee_role_id", using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string   "des_genre",  limit: 255
@@ -68,10 +85,12 @@ ActiveRecord::Schema.define(version: 20160929044950) do
     t.string   "telephone",   limit: 255
     t.string   "email",       limit: 255
     t.string   "description", limit: 255
-    t.string   "admin",       limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "employee_id", limit: 4
   end
+
+  add_index "shops", ["employee_id"], name: "index_shops_on_employee_id", using: :btree
 
   create_table "singers", force: :cascade do |t|
     t.string   "nom_singer", limit: 255
@@ -92,7 +111,9 @@ ActiveRecord::Schema.define(version: 20160929044950) do
   add_index "songs", ["genre_id"], name: "index_songs_on_genre_id", using: :btree
   add_index "songs", ["singer_id"], name: "index_songs_on_singer_id", using: :btree
 
+  add_foreign_key "employees", "employee_roles"
   add_foreign_key "rooms", "shops"
+  add_foreign_key "shops", "employees"
   add_foreign_key "songs", "genres"
   add_foreign_key "songs", "singers"
 end

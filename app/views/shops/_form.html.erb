@@ -11,8 +11,8 @@
   <%= error_span(@shop[:email]) %>
   <%= f.input :description %>
   <%= error_span(@shop[:description]) %>
-  <%= f.input :admin %>
-  <%= error_span(@shop[:admin]) %>
+  <%= f.association :employee %> 
+  <%= error_span(@shop[:employee]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

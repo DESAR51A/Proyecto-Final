@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: employees
+#
+#  id               :integer          not null, primary key
+#  nom_emp          :string(255)
+#  dni              :integer
+#  phone            :integer
+#  employee_role_id :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom_emp: 
+  dni: 
+  phone: 
+  employee_role_id: 
+
+two:
+  nom_emp: 
+  dni: 
+  phone: 
+  employee_role_id: 
