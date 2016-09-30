@@ -12,8 +12,8 @@
   <dd><%= @room.estado %></dd>
   <dt><strong><%= model_class.human_attribute_name(:capacidad) %>:</strong></dt>
   <dd><%= @room.capacidad %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:shop_id) %>:</strong></dt>
-  <dd><%= @room.shop_id %></dd>
+  <dt><strong>Local:</strong></dt>
+  <dd><%= @room.shop_name %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

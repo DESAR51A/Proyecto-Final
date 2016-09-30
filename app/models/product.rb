@@ -12,4 +12,12 @@
 
 class Product < ActiveRecord::Base
     belongs_to :category
+
+    def category_name
+        if self.category.present?
+            self.category.name
+        end
+    end
+
+
 end
