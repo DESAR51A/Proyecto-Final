@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930195341) do
+ActiveRecord::Schema.define(version: 20160930195950) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -70,7 +70,10 @@ ActiveRecord::Schema.define(version: 20160930195341) do
     t.string   "estado",      limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "category_id", limit: 4
   end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "cod_room",   limit: 4
@@ -118,6 +121,7 @@ ActiveRecord::Schema.define(version: 20160930195341) do
   add_index "songs", ["singer_id"], name: "index_songs_on_singer_id", using: :btree
 
   add_foreign_key "employees", "employee_roles"
+  add_foreign_key "products", "categories"
   add_foreign_key "rooms", "shops"
   add_foreign_key "shops", "employees"
   add_foreign_key "songs", "genres"
