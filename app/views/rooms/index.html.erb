@@ -15,7 +15,7 @@
       <th><%= model_class.human_attribute_name(:nom_room) %></th>
       <th><%= model_class.human_attribute_name(:estado) %></th>
       <th><%= model_class.human_attribute_name(:capacidad) %></th>
-      <th><%= model_class.human_attribute_name(:shop_id) %></th>
+      <th>Local</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -28,7 +28,7 @@
         <td><%= room.nom_room %></td>
         <td><%= room.estado %></td>
         <td><%= room.capacidad %></td>
-        <td><%= room.shop_id %></td>
+        <td><%= room.shop_name %></td>
         <td><%=l room.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

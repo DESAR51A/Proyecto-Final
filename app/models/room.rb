@@ -14,4 +14,12 @@
 
 class Room < ActiveRecord::Base
   belongs_to :shop
+  
+      def shop_name
+        if self.shop.present?
+            self.shop.name
+        end
+    end
+
+  
 end
