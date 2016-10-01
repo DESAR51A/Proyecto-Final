@@ -5,9 +5,9 @@
   <%= error_span(@song[:duracion]) %>
   <%= f.input :anio_song %>
   <%= error_span(@song[:anio_song]) %>
-  <%= f.input :singer %>
+  <%= f.association :singer %>
   <%= error_span(@song[:singer]) %>
-  <%= f.input :genre %>
+  <%= f.association :genre %>
   <%= error_span(@song[:genre]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

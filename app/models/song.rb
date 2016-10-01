@@ -17,11 +17,11 @@ class Song < ActiveRecord::Base
   belongs_to :genre
   
   def singer_name    
-    self.singer.name  
+    self.singer.nom_singer  
   end
       
   def genre_name    
-    self.genre.name  
+    self.genre.des_genre
   end
   
   validates :singer, presence: true 

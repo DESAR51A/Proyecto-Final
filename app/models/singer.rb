@@ -14,4 +14,8 @@ class Singer < ActiveRecord::Base
     
     validates :nom_singer, presence: true, 
                     uniqueness: {case_sensitive: false}
+                    
+    def to_s
+        self.nom_singer
+    end
 end

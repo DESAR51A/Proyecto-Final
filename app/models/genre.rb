@@ -11,4 +11,8 @@
 class Genre < ActiveRecord::Base
     has_many :songs
     has_many :singers, through: :songs
+    
+    def to_s
+        self.des_genre
+    end
 end
