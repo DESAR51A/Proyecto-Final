@@ -16,7 +16,9 @@ class Employee < ActiveRecord::Base
   has_many :shops
   
   def role_name
-    self.employee_role.nom_rol
+    if self.employee_role.present?
+        self.employee_role.nom_rol
+    end
   end
 
   def to_s

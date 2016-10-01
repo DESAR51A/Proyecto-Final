@@ -5,7 +5,7 @@
   <%= error_span(@product[:nom_product]) %>
   <%= f.input :estado %>
   <%= error_span(@product[:estado]) %>
-  <%= f.association :category %> 
+  <%= f.association :category %>
   <%= error_span(@product[:category]) %>
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
