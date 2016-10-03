@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930195950) do
+ActiveRecord::Schema.define(version: 20161003044641) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 20160930195950) do
 
   add_index "employees", ["employee_role_id"], name: "index_employees_on_employee_role_id", using: :btree
 
+  create_table "events", force: :cascade do |t|
+    t.string   "nom_evento", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string   "des_genre",  limit: 255
     t.datetime "created_at",             null: false
@@ -74,6 +80,23 @@ ActiveRecord::Schema.define(version: 20160930195950) do
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+
+  create_table "reservations", force: :cascade do |t|
+    t.date     "fec_reserva"
+    t.integer  "can_persona", limit: 4
+    t.string   "comentario",  limit: 255
+    t.integer  "event_id",    limit: 4
+    t.integer  "client_id",   limit: 4
+    t.integer  "room_id",     limit: 4
+    t.integer  "shop_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "reservations", ["client_id"], name: "index_reservations_on_client_id", using: :btree
+  add_index "reservations", ["event_id"], name: "index_reservations_on_event_id", using: :btree
+  add_index "reservations", ["room_id"], name: "index_reservations_on_room_id", using: :btree
+  add_index "reservations", ["shop_id"], name: "index_reservations_on_shop_id", using: :btree
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "cod_room",   limit: 4
@@ -122,6 +145,10 @@ ActiveRecord::Schema.define(version: 20160930195950) do
 
   add_foreign_key "employees", "employee_roles"
   add_foreign_key "products", "categories"
+  add_foreign_key "reservations", "clients"
+  add_foreign_key "reservations", "events"
+  add_foreign_key "reservations", "rooms"
+  add_foreign_key "reservations", "shops"
   add_foreign_key "rooms", "shops"
   add_foreign_key "shops", "employees"
   add_foreign_key "songs", "genres"

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reservations
+  resources :events
   resources :categories
   resources :employees
   resources :employee_roles

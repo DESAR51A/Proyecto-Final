@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fec_reserva: 2016-10-03
+  can_persona: 1
+  comentario: MyString
+  event_id: 
+  client_id: 
+  room_id: 
+  shop_id: 
+
+two:
+  fec_reserva: 2016-10-03
+  can_persona: 1
+  comentario: MyString
+  event_id: 
+  client_id: 
+  room_id: 
+  shop_id: 
