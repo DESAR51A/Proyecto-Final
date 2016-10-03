@@ -1,8 +1,13 @@
 <%- model_class = Reservation -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => "Reservaciones" %></h1>
 </div>
-<table class="table table-striped">
+
+<%= link_to t('.new', :default => "Agregar"), new_reservation_path, :class => 'btn btn-primary' %>
+<br>
+<br>
+
+<table id="datatable" class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -43,6 +48,3 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_reservation_path,
-            :class => 'btn btn-primary' %>
