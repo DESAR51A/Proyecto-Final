@@ -5,13 +5,13 @@
   <%= error_span(@reservation[:can_persona]) %>
   <%= f.input :comentario %>
   <%= error_span(@reservation[:comentario]) %>
-  <%= f.input :event_id %>
+  <%= f.association :event %>
   <%= error_span(@reservation[:event_id]) %>
   <%= f.input :client_id %>
   <%= error_span(@reservation[:client_id]) %>
-  <%= f.input :room_id %>
+  <%= f.association :room %>
   <%= error_span(@reservation[:room_id]) %>
-  <%= f.input :shop_id %>
+  <%= f.association :shop %>
   <%= error_span(@reservation[:shop_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
