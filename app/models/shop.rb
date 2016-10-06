@@ -17,6 +17,7 @@
 class Shop < ActiveRecord::Base
     belongs_to :employee
     has_many :rooms
+    has_many :reservations
     
     def admin_name
         if self.employee.present?

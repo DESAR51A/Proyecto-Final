@@ -1,0 +1,23 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1>Orden de Producto</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Reserva / Fecha:</strong></dt>
+  <dd><%= @order.reservation %></dd>
+  <dt><strong>Producto:</strong></dt>
+  <dd><%= @order.product %></dd>
+  <dt><strong>Cantidad:</strong></dt>
+  <dd><%= @order.cantidad %></dd>
+</dl>
+
+<%= link_to t('.back', :default => 'Ordenes'),
+              orders_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => 'Editar'),
+              edit_order_path(@order), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => 'Eliminar'),
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => '¿Estás seguro?' },
+              :class => 'btn btn-danger' %>

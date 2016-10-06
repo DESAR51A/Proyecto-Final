@@ -13,13 +13,14 @@
 #
 
 class Room < ActiveRecord::Base
+  has_many :reservations
   belongs_to :shop
   
-      def shop_name
-        if self.shop.present?
-            self.shop.name
-        end
-    end
+  def shop_name
+      if self.shop.present?
+          self.shop.name
+      end
+  end
 
   
 end

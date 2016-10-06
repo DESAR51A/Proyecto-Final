@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003044641) do
+ActiveRecord::Schema.define(version: 20161006132227) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 20161003044641) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "reservation_id", limit: 4
+    t.integer  "product_id",     limit: 4
+    t.integer  "cantidad",       limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
+  add_index "orders", ["reservation_id"], name: "index_orders_on_reservation_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.integer  "cod_product", limit: 4
@@ -144,6 +155,8 @@ ActiveRecord::Schema.define(version: 20161003044641) do
   add_index "songs", ["singer_id"], name: "index_songs_on_singer_id", using: :btree
 
   add_foreign_key "employees", "employee_roles"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "reservations"
   add_foreign_key "products", "categories"
   add_foreign_key "reservations", "clients"
   add_foreign_key "reservations", "events"

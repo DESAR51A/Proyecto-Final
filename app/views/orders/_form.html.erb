@@ -1,0 +1,12 @@
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :reservation, label: 'Reserva'%>
+  <%= error_span(@order[:reservation]) %>
+  <%= f.association :product, label: 'Producto'%>
+  <%= error_span(@order[:product]) %>
+  <%= f.input :cantidad, label: 'Cantidad'%>
+  <%= error_span(@order[:cantidad]) %>
+
+  <%= f.button :submit, 'Grabar', :class => 'btn-primary' %>
+  <%= link_to 'Cancelar',
+                orders_path, :class => 'btn btn-default'%>
+<% end %>

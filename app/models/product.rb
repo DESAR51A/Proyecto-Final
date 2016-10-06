@@ -8,16 +8,21 @@
 #  estado      :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category_id :integer
 #
 
 class Product < ActiveRecord::Base
     belongs_to :category
-
+    has_many :orders
+    
     def category_name
         if self.category.present?
             self.category.name
         end
     end
 
+    def to_s
+        self.nom_product
+    end
 
 end

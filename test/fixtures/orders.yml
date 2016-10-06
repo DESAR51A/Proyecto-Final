@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id             :integer          not null, primary key
+#  reservation_id :integer
+#  product_id     :integer
+#  cantidad       :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation_id: 
+  product_id: 
+  cantidad: 1
+
+two:
+  reservation_id: 
+  product_id: 
+  cantidad: 1

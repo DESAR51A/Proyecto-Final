@@ -1,0 +1,38 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1>Ordenes de Productos</h1>
+</div>
+
+<%= link_to 'Agregar Orden', new_order_path, :class => 'btn btn-primary' %>
+<br>
+<br>
+
+<table id="datatable" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Reserva / Fecha</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.reservation %></td>
+        <td><%= order.product %></td>
+        <td><%= order.cantidad %></td>
+        <td>
+          <%= link_to 'Editar',
+                      edit_order_path(order), :class => 'btn btn-default btn-xs' %>
+          <%= link_to 'Eliminar',
+                      order_path(order),
+                      :method => :delete,
+                      :data => { :confirm => '¿Estás seguro?' },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

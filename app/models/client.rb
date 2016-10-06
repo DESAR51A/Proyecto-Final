@@ -22,8 +22,19 @@
 #
 
 class Client < ActiveRecord::Base
+  
+  has_many :reservations
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :dni, presence: true, uniqueness: {case_sensitive: false}
+  validates :birth, presence: true
+  validates :email, presence: true, uniqueness: {case_sensitive: false}
+  
+  
+
 end
