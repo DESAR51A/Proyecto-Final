@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :genres
   resources :singers
   devise_for :clients
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'costumers', controller: :costumers, action: :home, alias: 'costumers'
   get 'eventos', controller: :costumers, action: :eventos, alias: 'eventos'
   get 'locales', controller: :costumers, action: :locales, alias: 'locales'

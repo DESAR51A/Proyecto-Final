@@ -1,5 +1,5 @@
 class CostumersController < ApplicationController
-  layout false
+  layout 'customer'
   def home
   end
   
