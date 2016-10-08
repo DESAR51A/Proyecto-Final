@@ -1,6 +1,6 @@
 class SingersController < ApplicationController
   before_action :set_singer, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_employee!
   # GET /singers
   # GET /singers.json
   def index

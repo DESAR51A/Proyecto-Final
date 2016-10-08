@@ -1,3 +1,4 @@
+<p class="sidebar_container">
 <% if current_user %>
 
        Signed in as <%= link_to current_user.friendly_name, edit_profile_path(current_user.profile), class: "navbar-link" %>
@@ -11,3 +12,4 @@
       <%= link_to "Sign in", new_user_session_path, class: "navbar-link" %>
 
   <% end %>
+  </p>

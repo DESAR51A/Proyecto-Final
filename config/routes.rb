@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :clients
+  devise_for :employees
   resources :orders
   resources :reservations
   resources :events
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :genres
   resources :singers
-  devise_for :clients
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'costumers', controller: :costumers, action: :home, alias: 'costumers'
   get 'eventos', controller: :costumers, action: :eventos, alias: 'eventos'

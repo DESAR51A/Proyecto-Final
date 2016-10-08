@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_employee!
   # GET /songs
   # GET /songs.json
   def index
