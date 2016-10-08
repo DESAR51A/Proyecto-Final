@@ -10,4 +10,8 @@
 
 class Event < ActiveRecord::Base
     has_many :reservations
+    
+  def to_s
+        self.nom_evento
+  end
 end

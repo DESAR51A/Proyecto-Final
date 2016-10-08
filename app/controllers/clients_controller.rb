@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-  #before_filter :authenticate_employee!
+  before_filter :authenticate_employee!
   # GET /clients
   # GET /clients.json
   def index
