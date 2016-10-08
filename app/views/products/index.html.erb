@@ -16,8 +16,7 @@
       <th><%= model_class.human_attribute_name(:cod_product) %></th>
       <th><%= model_class.human_attribute_name(:nom_product) %></th>
       <th>Categoria</th>
-      <th><%= model_class.human_attribute_name(:estado) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -28,8 +27,7 @@
         <td><%= product.cod_product %></td>
         <td><%= product.nom_product %></td>
         <td><%= product.category_name %></td>
-        <td><%= product.estado %></td>
-        <td><%=l product.created_at %></td>
+        <td><%= number_to_currency product.price %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-default btn-xs' %>

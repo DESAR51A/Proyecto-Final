@@ -14,6 +14,9 @@
 class Product < ActiveRecord::Base
     belongs_to :category
     has_many :orders
+    #validates_associated :category
+    validates :nom_product, :price, :category_id, presence: true
+    validates :cod_product, uniqueness: true
     
     def category_name
         if self.category.present?
