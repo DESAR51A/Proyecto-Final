@@ -1,7 +1,5 @@
-<p class="enu-menu-1-container">
     <% if client_signed_in? %>
-      <li><%= link_to('Logout', destroy_client_session_path, :method => :delete) %></li>
+      <%= link_to('Cerrar Sesión', destroy_client_session_path, :method => :delete) %>
     <% else %>
-      <li><%= link_to('Login', new_client_session_path)  %></li>
+      <%= link_to('Iniciar Sesión', new_client_session_path)  %>
     <% end %>
-</p>
