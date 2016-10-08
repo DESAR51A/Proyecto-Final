@@ -22,7 +22,7 @@ class Reservation < ActiveRecord::Base
   has_many :orders
 
   def to_s
-        self.event_id
+        self.client.name + ' - ' + self.fec_reserva.strftime("%d/%m/%Y") 
   end
 
 
