@@ -11,6 +11,7 @@
 #  category_id :integer
 #  price       :decimal(10, )
 #  shop_id     :integer
+
 #
 
 class Product < ActiveRecord::Base

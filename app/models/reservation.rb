@@ -22,6 +22,9 @@ class Reservation < ActiveRecord::Base
   has_many :orders
   validates :fec_reserva, :can_persona, :event_id, :client_id, :room_id, :shop_id, presence: true
   validates :cod_product, uniqueness: true
+  has_many :playlists
+  has_many :songs, through: :playlists
+
   def to_s
         self.client.name + ' - ' + self.fec_reserva.strftime("%d/%m/%Y") 
   end

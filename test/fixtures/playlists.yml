@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: playlists
+#
+#  id             :integer          not null, primary key
+#  play_order     :integer
+#  reservation_id :integer
+#  song_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  play_order: 1
+  reservation_id: 
+  song_id: 
+
+two:
+  play_order: 1
+  reservation_id: 
+  song_id: 

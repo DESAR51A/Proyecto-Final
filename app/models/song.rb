@@ -15,6 +15,8 @@
 class Song < ActiveRecord::Base
   belongs_to :singer
   belongs_to :genre
+  has_many :playlists
+  has_many :reservations, through: :playlists
   
   def singer_name    
     self.singer.nom_singer  
@@ -22,6 +24,10 @@ class Song < ActiveRecord::Base
       
   def genre_name    
     self.genre.des_genre
+  end
+  
+  def to_s
+        self.nom_song
   end
   
   validates :singer, presence: true 
