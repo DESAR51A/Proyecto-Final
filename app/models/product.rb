@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer
+#  price       :decimal(10, )
 #
 
 class Product < ActiveRecord::Base

@@ -1,0 +1,12 @@
+<%= simple_form_for @playlist, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :play_order %>
+  <%= error_span(@playlist[:play_order]) %>
+  <%= f.association :reservation %>
+  <%= error_span(@playlist[:reservation]) %>
+  <%= f.association :song %>
+  <%= error_span(@playlist[:song]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                playlists_path, :class => 'btn btn-default' %>
+<% end %>

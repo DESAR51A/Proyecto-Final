@@ -20,6 +20,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :room
   belongs_to :shop
   has_many :orders
+  has_many :playlists
+  has_many :songs, through: :playlists
 
   def to_s
         self.client.name + ' - ' + self.fec_reserva.strftime("%d/%m/%Y") 
