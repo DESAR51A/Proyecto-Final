@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_employee!
+  #before_filter :authenticate_employee!
   # GET /clients
   # GET /clients.json
   def index
@@ -40,6 +40,13 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
+
+    # Eliminar parámetro password si no ha sido ingresado, para que devise no actualice o valide password si no ha sido ingresado, mantenga password actual
+    if params[:client][:password].blank?
+      params[:client].delete(:password)
+      params[:client].delete(:password_confirmation)
+    end    
+
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }

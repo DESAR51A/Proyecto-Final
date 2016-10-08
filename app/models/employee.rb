@@ -18,6 +18,12 @@ class Employee < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :employee_role
   has_many :shops
+
+  validates :nom_emp, presence: true
+  validates :dni, presence: true, uniqueness: {case_sensitive: false}
+  validates :employee_role, presence: true
+  validates :email, presence: true, uniqueness: {case_sensitive: false}
+
   
   def role_name
     if self.employee_role.present?

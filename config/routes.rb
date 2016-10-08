@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :clients
-  devise_for :employees
+  devise_for :clients, path: 'client_auth'
+  devise_for :employees, path: 'employee_auth'
   resources :orders
   resources :reservations
   resources :events

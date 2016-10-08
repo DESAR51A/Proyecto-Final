@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_employee!
+  #before_filter :authenticate_employee!
   # GET /employees
   # GET /employees.json
   def index
@@ -40,6 +40,13 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
+    
+    # Eliminar parámetro password si no ha sido ingresado, para que devise no actualice o valide password si no ha sido ingresado, mantenga password actual
+    if params[:employee][:password].blank?
+      params[:employee].delete(:password)
+      params[:employee].delete(:password_confirmation)
+    end    
+    
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
@@ -69,6 +76,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:nom_emp, :dni, :phone, :employee_role_id)
+      params.require(:employee).permit(:nom_emp, :dni, :phone, :employee_role_id, :email, :password, :current_password, :password_confirmation)
     end
 end

@@ -11,7 +11,12 @@
   <%= f.input :phone %>
   <%= error_span(@client[:phone]) %>
     
-  <% if !@client.persisted?  %>
+  <% if @client.persisted?  %>
+    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+    <%= error_span(@client[:password]) %>
+    <%= f.input :password_confirmation, required: false %>
+    <%= error_span(@client[:password_confirmation]) %>
+  <% else %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= error_span(@client[:password]) %>
     <%= f.input :password_confirmation, required: true %>
