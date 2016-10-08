@@ -21,6 +21,9 @@ class Room < ActiveRecord::Base
           self.shop.name
       end
   end
-
+  
+  def to_s
+        self.nom_room
+  end
   
 end
