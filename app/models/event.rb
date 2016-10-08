@@ -10,7 +10,8 @@
 
 class Event < ActiveRecord::Base
     has_many :reservations
-    
+    validates :nom_evento, presence: true
+    validates :nom_evento, uniqueness: true
   def to_s
         self.nom_evento
   end

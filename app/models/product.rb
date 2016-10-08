@@ -9,18 +9,26 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer
+#  price       :decimal(10, )
+#  shop_id     :integer
 #
 
 class Product < ActiveRecord::Base
     belongs_to :category
     has_many :orders
+    belongs_to :shop
     #validates_associated :category
-    validates :nom_product, :price, :category_id, presence: true
+    validates :cod_product, :nom_product, :price, :category_id, :shop_id, presence: true
     validates :cod_product, uniqueness: true
     
     def category_name
         if self.category.present?
             self.category.name
+        end
+    end
+    def shop_name
+        if self.shop.present?
+            self.shop.name
         end
     end
 
