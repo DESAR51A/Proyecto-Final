@@ -10,9 +10,9 @@
   <%= f.association :client %>
   <%= error_span(@reservation[:client_id]) %>
   <%= f.association :room %>
-  <%= error_span(@reservation[:room_id]) %>
+  <%= error_span(@reservation[:room]) %>
   <%= f.association :shop %>
-  <%= error_span(@reservation[:shop_id]) %>
+  <%= error_span(@reservation[:shop]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
