@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :playlists
   devise_for :clients, path: 'client_auth'
   devise_for :employees, path: 'employee_auth'
 
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
   resources :rooms, path: 'backend/rooms'
   resources :clients, path: 'backend/clients'
   resources :shops, path: 'backend/shops'
+  resources :playlists, path: 'backend/playlists'
   get 'welcome/homepage', path: 'backend'
 
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
