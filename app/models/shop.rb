@@ -18,7 +18,8 @@ class Shop < ActiveRecord::Base
     belongs_to :employee
     has_many :rooms
     has_many :reservations
-    
+    validates :code, :name, :address, :telephone, :email, :employee_id, presence: true
+    validates :code, uniqueness: true
     def admin_name
         if self.employee.present?
             self.employee.nom_emp

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :playlists
   devise_for :clients, path: 'client_auth'
   devise_for :employees, path: 'employee_auth'
 

@@ -1,37 +1,36 @@
 <%- model_class = Client -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Clientes</h1>
 </div>
-<table class="table table-striped">
+<%= link_to 'Nuevo Cliente', new_client_path, :class => 'btn btn-primary' %>
+<br>
+<br>
+<table id='datatable' class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:Nombre) %></th>
       <th><%= model_class.human_attribute_name(:dni) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:birth) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:Correo) %></th>
+      <th><%= model_class.human_attribute_name(:Birth) %></th>
+      <th><%= model_class.human_attribute_name(:Teléfono) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= link_to client.id, client_path(client) %></td>
         <td><%= client.name %></td>
         <td><%= client.dni %></td>
         <td><%= client.email %></td>
         <td><%= client.birth %></td>
         <td><%= client.phone %></td>
-        <td><%=l client.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.edit', :default => t("Editar")),
                       edit_client_path(client), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('.destroy', :default => t("Eliminar")),
                       client_path(client),
                       :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :data => { :confirm => '¿Estás seguro?' },
                       :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
@@ -39,6 +38,4 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_client_path,
-            :class => 'btn btn-primary' %>
+

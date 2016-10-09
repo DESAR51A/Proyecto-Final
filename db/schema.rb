@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007141313) do
+ActiveRecord::Schema.define(version: 20161008202514) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -93,16 +93,30 @@ ActiveRecord::Schema.define(version: 20161007141313) do
   add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
   add_index "orders", ["reservation_id"], name: "index_orders_on_reservation_id", using: :btree
 
+  create_table "playlists", force: :cascade do |t|
+    t.integer  "play_order",     limit: 4
+    t.integer  "reservation_id", limit: 4
+    t.integer  "song_id",        limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "playlists", ["reservation_id"], name: "index_playlists_on_reservation_id", using: :btree
+  add_index "playlists", ["song_id"], name: "index_playlists_on_song_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.integer  "cod_product", limit: 4
     t.string   "nom_product", limit: 255
     t.string   "estado",      limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "category_id", limit: 4
+    t.decimal  "price",                   precision: 10
+    t.integer  "shop_id",     limit: 4
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["shop_id"], name: "index_products_on_shop_id", using: :btree
 
   create_table "reservations", force: :cascade do |t|
     t.date     "fec_reserva"
@@ -169,7 +183,10 @@ ActiveRecord::Schema.define(version: 20161007141313) do
   add_foreign_key "employees", "employee_roles"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "reservations"
+  add_foreign_key "playlists", "reservations"
+  add_foreign_key "playlists", "songs"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "shops"
   add_foreign_key "reservations", "clients"
   add_foreign_key "reservations", "events"
   add_foreign_key "reservations", "rooms"

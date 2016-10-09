@@ -15,7 +15,8 @@
 class Room < ActiveRecord::Base
   has_many :reservations
   belongs_to :shop
-  
+  validates :cod_room, :nom_room, :capacidad, :shop_id, presence: true
+  validates :cod_room, uniqueness: true
   def shop_name
       if self.shop.present?
           self.shop.name

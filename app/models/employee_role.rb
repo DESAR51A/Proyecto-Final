@@ -10,7 +10,7 @@
 
 class EmployeeRole < ActiveRecord::Base
     has_many :employees
-    
+    validates :nom_rol, presence: true
     def to_s
      self.nom_rol
     end

@@ -29,10 +29,10 @@
         <td><%= reservation.fec_reserva %></td>
         <td><%= reservation.can_persona %></td>
         <td><%= reservation.comentario %></td>
-        <td><%= reservation.event_id %></td>
-        <td><%= reservation.client_id %></td>
-        <td><%= reservation.room_id %></td>
-        <td><%= reservation.shop_id %></td>
+        <td><%= reservation.event_name %></td>
+        <td><%= reservation.client_name %></td>
+        <td><%= reservation.room_name %></td>
+        <td><%= reservation.shop_name %></td>
         <td><%=l reservation.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
