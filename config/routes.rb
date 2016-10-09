@@ -1,29 +1,30 @@
 Rails.application.routes.draw do
   devise_for :clients, path: 'client_auth'
   devise_for :employees, path: 'employee_auth'
-  resources :orders
-  resources :reservations
-  resources :events
-  resources :categories
-  resources :employees
-  resources :employee_roles
-  resources :songs
-  resources :genres
-  resources :singers
-  
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   get 'costumers', controller: :costumers, action: :home, alias: 'costumers'
   get 'eventos', controller: :costumers, action: :eventos, alias: 'eventos'
   get 'locales', controller: :costumers, action: :locales, alias: 'locales'
   get 'contacto', controller: :costumers, action: :contacto, alias: 'contacto'
+
+  resources :products, path: 'backend/products'
+  resources :orders, path: 'backend/orders'
+  resources :reservations, path: 'backend/reservations'
+  resources :events, path: 'backend/events'
+  resources :categories, path: 'backend/categories'
+  resources :employees, path: 'backend/employees'
+  resources :employee_roles, path: 'backend/employee_roles'
+  resources :songs, path: 'backend/songs'
+  resources :genres, path: 'backend/genres'
+  resources :singers, path: 'backend/singers'
+  resources :rooms, path: 'backend/rooms'
+  resources :clients, path: 'backend/clients'
+  resources :shops, path: 'backend/shops'
+  get 'welcome/homepage', path: 'backend'
+
+  #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  resources :rooms
-  resources :clients
-  resources :products
-  resources :shops
-  get 'welcome/homepage'
-  #root 'shops#index'
-  root 'welcome#homepage'
+  root 'costumers#home'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
