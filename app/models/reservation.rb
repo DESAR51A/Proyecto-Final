@@ -20,8 +20,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :room
   belongs_to :shop
   has_many :orders
-  validates :fec_reserva, :can_persona, :event_id, :client_id, :room_id, :shop_id, presence: true
-  validates :cod_product, uniqueness: true
+  validates :fec_reserva, :can_persona, :client_id, :room_id, :shop_id, presence: true
   has_many :playlists
   has_many :songs, through: :playlists
   
@@ -49,8 +48,19 @@ class Reservation < ActiveRecord::Base
         end
   end
   
+  def fecha_dma
+    self.fec_reserva.strftime("%d/%m/%Y")
+  end
+  
   def to_s
         self.client.name + ' - ' + self.fec_reserva.strftime("%d/%m/%Y") 
+  end
+
+  def self.from_client(client)
+
+    Reservation.where(client_id: client.id)
+
+
   end
 
 

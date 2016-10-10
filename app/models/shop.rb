@@ -18,6 +18,7 @@ class Shop < ActiveRecord::Base
     belongs_to :employee
     has_many :rooms
     has_many :reservations
+    accepts_nested_attributes_for :rooms
     validates :code, :name, :address, :telephone, :email, :employee_id, presence: true
     validates :code, uniqueness: true
     def admin_name

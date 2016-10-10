@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
         "customer"
       end
     else 
-      "application"
+      if request.url.include? "/backend"
+        "application"
+      else
+        "customer"
+      end
     end
   end
 

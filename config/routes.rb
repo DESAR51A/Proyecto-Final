@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :clients, path: 'client_auth'
   devise_for :employees, path: 'employee_auth'
 
@@ -6,6 +7,11 @@ Rails.application.routes.draw do
   get 'eventos', controller: :costumers, action: :eventos, alias: 'eventos'
   get 'locales', controller: :costumers, action: :locales, alias: 'locales'
   get 'contacto', controller: :costumers, action: :contacto, alias: 'contacto'
+  get 'reservas', controller: :costumers, action: :reservas, alias: 'reservas'
+  get 'pedidos', controller: :costumers, action: :pedidos, alias: 'pedidos'
+  get 'reservas/:id/cancelar', controller: :costumers, action: :cancel_reservation, as: :cancel_reservation
+  match '/costumers', to: 'costumers#add_reservation', via: 'post'
+
 
   resources :products, path: 'backend/products'
   resources :orders, path: 'backend/orders'

@@ -1,6 +1,4 @@
-<%= simple_form_for @reservation, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.association :client, label: 'Cliente' %>
-  <%= error_span(@reservation[:client_id]) %>
+<%= simple_form_for @reservation, :url => url_for(:action => 'add_reservation', :controller => 'costumers'), :method => 'post', :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.association :shop, label: 'Local' %>
   <%= error_span(@reservation[:shop]) %>
   <%= f.association :room, label: 'Sala' %>
@@ -14,8 +12,6 @@
   <%= f.association :event, label: 'Evento (opcional)' %>
   <%= error_span(@reservation[:event_id]) %>
 
-  <%= f.button :submit, 'Grabar', :class => 'btn-primary' %>
-  <%= link_to 'Cancelar',
-                reservations_path, :class => 'btn btn-default'%>
+  <%= f.button :submit, 'Enviar Reserva', :class => 'btn-primary' %>
 
 <% end %>

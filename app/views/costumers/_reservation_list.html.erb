@@ -1,0 +1,35 @@
+<%- model_class = Reservation -%>
+
+<table id="datatable" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Cantidad Personas</th>
+      <th>Comentario</th>
+      <th>Local</th>
+      <th>Sala</th>
+      <th>Evento</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Reservation.from_client(current_client).each do |reservation| %>
+      <tr>
+        <td><%= reservation.fecha_dma %></td>
+        <td><%= reservation.can_persona %></td>
+        <td><%= reservation.comentario %></td>
+        <td><%= reservation.shop_name %></td>
+        <td><%= reservation.room_name %></td>
+        <td><%= reservation.event_name %></td>
+        <td>
+
+            <%= link_to 'Cancelar', 
+                        cancel_reservation_path(reservation),  
+                        :data => { :confirm => '¿Estás seguro?' },
+                        :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
