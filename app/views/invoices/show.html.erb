@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fec invoice:</strong>
+  <%= @invoice.fec_invoice %>
+</p>
+
+<p>
+  <strong>Num ruc:</strong>
+  <%= @invoice.num_ruc %>
+</p>
+
+<p>
+  <strong>Nom cliente:</strong>
+  <%= @invoice.nom_cliente %>
+</p>
+
+<p>
+  <strong>Val invoice:</strong>
+  <%= @invoice.val_invoice %>
+</p>
+
+<p>
+  <strong>Reservation:</strong>
+  <%= @invoice.reservation %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'invoice_items',invoice_invoice_items_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

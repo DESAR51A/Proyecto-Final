@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fec_invoice: 2016-10-11
+  num_ruc: 1
+  nom_cliente: MyString
+  val_invoice: 9.99
+  reservation_id: 
+
+two:
+  fec_invoice: 2016-10-11
+  num_ruc: 1
+  nom_cliente: MyString
+  val_invoice: 9.99
+  reservation_id: 

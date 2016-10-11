@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011041150) do
+ActiveRecord::Schema.define(version: 20161011033350) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -93,6 +93,31 @@ ActiveRecord::Schema.define(version: 20161011041150) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer  "cod_producto", limit: 4
+    t.decimal  "precio_unit",            precision: 10
+    t.decimal  "descuento",              precision: 10
+    t.integer  "cantidad",     limit: 4
+    t.decimal  "costo",                  precision: 10
+    t.integer  "invoice_id",   limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.date     "fec_invoice"
+    t.integer  "num_ruc",        limit: 4
+    t.string   "nom_cliente",    limit: 255
+    t.decimal  "val_invoice",                precision: 10
+    t.integer  "reservation_id", limit: 4
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "invoices", ["reservation_id"], name: "index_invoices_on_reservation_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "reservation_id", limit: 4
@@ -195,6 +220,8 @@ ActiveRecord::Schema.define(version: 20161011041150) do
   add_foreign_key "comments", "clients"
   add_foreign_key "comments", "reservations"
   add_foreign_key "employees", "employee_roles"
+  add_foreign_key "invoice_items", "invoices"
+  add_foreign_key "invoices", "reservations"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "reservations"
   add_foreign_key "playlists", "reservations"

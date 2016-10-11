@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Invoice Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cod producto</th>
+      <th>Precio unit</th>
+      <th>Descuento</th>
+      <th>Cantidad</th>
+      <th>Costo</th>
+      <th>Invoice</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoice_items.each do |invoice_item| %>
+      <tr>
+        <td><%= invoice_item.cod_producto %></td>
+        <td><%= invoice_item.precio_unit %></td>
+        <td><%= invoice_item.descuento %></td>
+        <td><%= invoice_item.cantidad %></td>
+        <td><%= invoice_item.costo %></td>
+        <td><%= invoice_item.invoice %></td>
+        <td><%= link_to 'Show', invoice_invoice_item_path(@invoice, invoice_item) %></td>
+        <td><%= link_to 'Edit', edit_invoice_invoice_item_path(@invoice, invoice_item) %></td>
+        <td><%= link_to 'Destroy', invoice_invoice_item_path(@invoice, invoice_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invoice item', new_invoice_invoice_item_path(@invoice) %>
+
