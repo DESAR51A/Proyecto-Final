@@ -14,9 +14,14 @@
 
 class Room < ActiveRecord::Base
   has_many :reservations
+  has_many :comments
   belongs_to :shop
   validates :cod_room, :nom_room, :capacidad, :shop_id, presence: true
   validates :cod_room, uniqueness: true
+  validates :cod_room, length: { maximum: 3 }
+  validates :capacidad, numericality: { only_integer: true }
+  validates :capacidad, length: { maximum: 3 }
+  
   def shop_name
       if self.shop.present?
           self.shop.name

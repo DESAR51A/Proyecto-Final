@@ -23,6 +23,7 @@ class Reservation < ActiveRecord::Base
   validates :fec_reserva, :can_persona, :client_id, :room_id, :shop_id, presence: true
   has_many :playlists
   has_many :songs, through: :playlists
+  has_many :comments
   
   def shop_name
         if self.shop.present?
