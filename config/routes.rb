@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  
+  
+  resources :invoices do
+    resources :invoice_items
+  end
+  
+  
   devise_for :clients, path: 'client_auth'
   devise_for :employees, path: 'employee_auth'
 
