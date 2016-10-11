@@ -21,6 +21,9 @@ class Product < ActiveRecord::Base
     #validates_associated :category
     validates :cod_product, :nom_product, :price, :category_id, :shop_id, presence: true
     validates :cod_product, uniqueness: true
+    validates :cod_product, length: { maximum: 3 }
+    validates :nom_product, length: { maximum: 20 }
+    validates :price, numericality: true
     
     def category_name
         if self.category.present?

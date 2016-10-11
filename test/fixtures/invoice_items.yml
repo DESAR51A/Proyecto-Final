@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_producto: 1
+  precio_unit: 9.99
+  descuento: 9.99
+  cantidad: 1
+  costo: 9.99
+  invoice_id: 
+
+two:
+  cod_producto: 1
+  precio_unit: 9.99
+  descuento: 9.99
+  cantidad: 1
+  costo: 9.99
+  invoice_id: 

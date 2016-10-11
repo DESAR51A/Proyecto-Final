@@ -1,0 +1,15 @@
+<%= simple_form_for(@invoice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :fec_invoice %>
+    <%= f.input :num_ruc %>
+    <%= f.input :nom_cliente %>
+    <%= f.input :val_invoice %>
+    <%= f.association :reservation %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

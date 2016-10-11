@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  
+  
+  resources :invoices do
+    resources :invoice_items
+  end
+  
+  
   devise_for :clients, path: 'client_auth'
   devise_for :employees, path: 'employee_auth'
 
@@ -32,6 +39,7 @@ Rails.application.routes.draw do
   resources :clients, path: 'backend/clients'
   resources :shops, path: 'backend/shops'
   resources :playlists, path: 'backend/playlists'
+  resources :comments, path: 'backend/comments'
   get 'welcome/homepage', path: 'backend'
 
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -73,8 +81,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end
