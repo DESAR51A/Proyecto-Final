@@ -1,0 +1,31 @@
+<%- model_class = Order -%>
+
+<table id="datatable" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Fecha Reserva / Sala</th>
+      <th>Producto Ordenado</th>
+      <th>Cantidad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Order.from_client(current_client).each do |order| %>
+      <tr>
+        <td><%= order.reservation.fecha_dma + ' -  ' + order.reservation.room.nom_room + ' (' + order.reservation.shop.name + ')' %></td>
+        <td><%= order.product %></td>
+        <td><%= order.cantidad %></td>
+        <td>
+
+          <%= link_to 'Cancelar',
+                      cancel_order_path(order),
+                      :data => { :confirm => '¿Estás seguro?' },
+                      :class => 'btn btn-xs btn-danger' %>
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

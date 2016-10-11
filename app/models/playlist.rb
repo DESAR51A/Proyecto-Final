@@ -17,4 +17,11 @@ class Playlist < ActiveRecord::Base
   
   validates :song, presence: true 
   validates :reservation, presence: true
+
+  def self.from_client(client)
+    #Order.where(client: client)
+    Playlist.joins(:reservation).where('reservations.client_id = ?', client.id)
+  end
+
+
 end
