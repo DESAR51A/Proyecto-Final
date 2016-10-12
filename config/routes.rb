@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   get 'reservas', controller: :costumers, action: :reservas, alias: 'reservas'
   get 'pedidos', controller: :costumers, action: :pedidos, alias: 'pedidos'
   get 'canciones', controller: :costumers, action: :canciones, alias: 'canciones'
+  get 'comentar', controller: :costumers, action: :comentar, alias: 'comentar'
   get 'reservas/:id/cancelar', controller: :costumers, action: :cancel_reservation, as: :cancel_reservation
   get 'pedidos/:id/cancelar', controller: :costumers, action: :cancel_order, as: :cancel_order
   get 'canciones/:id/cancelar', controller: :costumers, action: :cancel_song, as: :cancel_song
   match '/costumers/add_reservation', to: 'costumers#add_reservation', via: 'post'
   match '/costumers/add_order', to: 'costumers#add_order', via: 'post'
   match '/costumers/add_song', to: 'costumers#add_song', via: 'post'
+  match '/costumers/add_comment', to: 'costumers#add_comment', via: 'post'
 
 
   resources :products, path: 'backend/products'

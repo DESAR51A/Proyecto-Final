@@ -1,0 +1,33 @@
+<%- model_class = Shop -%>
+
+<% Shop.all.each do |shop| %>
+<br>
+<h2><%= shop.name %></h2>
+<p>
+  <strong>Direcci&oacute;n: </strong><%= shop.address %>
+  <br>
+  <strong>Tel&eacute;fono: </strong><%= shop.telephone %>
+  <br>
+  <strong>Comentarios </strong> | <%= link_to "Agregar Comentario", comentar_path %>
+</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Sala</th>
+        <th>Cliente</th>
+        <th>Comentario</th>
+        <th>Estrellas</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% Comment.from_shop(shop).each do |comment| %>
+        <tr>
+          <td><%= comment.reservation.room.nom_room %></td>
+          <td><%= comment.client.name %></td>
+          <td><%= comment.comment %></td>
+          <td><%= comment.rating %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% end %>

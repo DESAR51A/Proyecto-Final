@@ -1,0 +1,13 @@
+<%= simple_form_for @comment, :url => url_for(:action => 'add_comment', :controller => 'costumers'), :method => 'post', :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :reservation, collection: Reservation.from_client(current_client), label: 'Reserva / Sala / Local'%>
+  <%= error_span(@comment[:reservation]) %>
+  <%= f.input :comment, label: 'Comentario' %>
+  <%= error_span(@comment[:comment]) %>
+  <%= f.input :rating, collection: 1..5, label: 'Valoración (1 a 5 estrellas)' %>
+  <%= error_span(@comment[:rating]) %>
+
+
+  <%= f.button :submit, 'Enviar Comentario', :class => 'btn-primary' %>
+
+<% end %>

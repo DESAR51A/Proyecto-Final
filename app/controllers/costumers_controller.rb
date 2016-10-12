@@ -1,6 +1,6 @@
 class CostumersController < ApplicationController
   
-  before_filter :authenticate_client!, only: [:reservas, :pedidos, :cancel_reservation]
+  before_filter :authenticate_client!, only: [:reservas, :pedidos, :canciones, :cancel_reservation, :add_reservation, :cancel_order, :add_order, :cancel_song, :add_song, :add_comment, :comentar]
 
   def home
   end
@@ -24,6 +24,11 @@ class CostumersController < ApplicationController
   
   def canciones
     @playlist = Playlist.new
+  end
+  
+  def comentar
+    @comment = Comment.new
+    
   end
 
 
@@ -78,7 +83,6 @@ class CostumersController < ApplicationController
   def add_order
 
     @order = Order.new(order_params)
-    #@order.client = current_client
 
     respond_to do |format|
       if @order.save
@@ -125,6 +129,26 @@ class CostumersController < ApplicationController
 
   end
 
+  def add_comment
+
+    @comment = Comment.new(comment_params)
+    @comment.client = current_client
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to locales_path, notice: 'Su comentario fue recibido, gracias!' }
+        format.json { render :show, status: :ok, location: @comment }
+
+      else
+        format.html { redirect_to locales_path }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+
+    
+  end
+
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -137,6 +161,8 @@ class CostumersController < ApplicationController
     def playlist_params
       params.require(:playlist).permit(:play_order, :reservation_id, :song_id)
     end
-
+    def comment_params
+      params.require(:comment).permit(:client_id, :comment, :rating, :reservation_id)
+    end
 
 end

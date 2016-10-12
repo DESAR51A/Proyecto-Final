@@ -26,5 +26,10 @@ class Comment < ActiveRecord::Base
       self.reservation.shop_id
     end
   end
+
+  def self.from_shop(shop)
+    Comment.joins(:reservation).where('reservations.shop_id = ?', shop.id)
+  end
+
   
 end
