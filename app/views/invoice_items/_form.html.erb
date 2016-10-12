@@ -1,16 +1,18 @@
-<%= simple_form_for(@invoice_item) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @invoice_item, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :cod_producto %>
+  <%= error_span(@invoice_item[:cod_producto]) %>
+  <%= f.input :precio_unit %>
+  <%= error_span(@invoice_item[:precio_unit]) %>
+  <%= f.input :descuento %>
+  <%= error_span(@invoice_item[:descuento]) %>
+  <%= f.input :cantidad %>
+  <%= error_span(@invoice_item[:cantidad]) %>
+  <%= f.input :costo %>
+  <%= error_span(@invoice_item[:costo]) %>
+  <%= f.input :invoice_id %>
+  <%= error_span(@invoice_item[:invoice_id]) %>
 
-  <div class="form-inputs">
-    <%= f.input :cod_producto %>
-    <%= f.input :precio_unit %>
-    <%= f.input :descuento %>
-    <%= f.input :cantidad %>
-    <%= f.input :costo %>
-    <%= f.association :invoice %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                invoice_invoice_items_path(@invoice), :class => 'btn btn-default' %>
 <% end %>

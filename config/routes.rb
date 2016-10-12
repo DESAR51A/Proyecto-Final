@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   
   
-  resources :invoices do
-    resources :invoice_items
+  resources :invoices, path: 'backend/invoices' do
+    resources :invoice_items, path: 'backend/invoice_items'
   end
   
   
