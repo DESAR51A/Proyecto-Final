@@ -54,14 +54,11 @@ class Reservation < ActiveRecord::Base
   end
   
   def to_s
-        self.client.name + ' - ' + self.fec_reserva.strftime("%d/%m/%Y") 
+        self.client.name + ' - ' + self.fec_reserva.strftime("%d/%m/%Y") + ' -  ' + self.room.nom_room + ' (' + self.shop.name + ')'
   end
 
   def self.from_client(client)
-
     Reservation.where(client_id: client.id)
-
-
   end
 
 

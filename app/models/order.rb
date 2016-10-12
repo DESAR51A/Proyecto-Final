@@ -19,5 +19,10 @@ class Order < ActiveRecord::Base
   validates :product, presence: true
   validates :cantidad, presence: true, numericality: { greater_than: 0}
 
+  def self.from_client(client)
+    #Order.where(client: client)
+    Order.joins(:reservation).where('reservations.client_id = ?', client.id)
+  end
+
   
 end

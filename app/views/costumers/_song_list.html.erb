@@ -1,0 +1,31 @@
+<%- model_class = Playlist -%>
+
+<table id="datatable" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Fecha Reserva / Sala</th>
+      <th>Canci&oacute;n Solicitada</th>
+      <th>Orden Reproducci&oacute;n</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Playlist.from_client(current_client).each do |playlist| %>
+      <tr>
+        <td><%= playlist.reservation.fecha_dma + ' -  ' + playlist.reservation.room.nom_room + ' (' + playlist.reservation.shop.name + ')' %></td>
+        <td><%= playlist.song %></td>
+        <td><%= playlist.play_order %></td>
+        <td>
+
+          <%= link_to 'Cancelar',
+                      cancel_song_path(playlist),
+                      :data => { :confirm => '¿Estás seguro?' },
+                      :class => 'btn btn-xs btn-danger' %>
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

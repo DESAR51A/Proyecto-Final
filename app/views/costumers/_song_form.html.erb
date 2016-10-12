@@ -1,0 +1,12 @@
+<%= simple_form_for @playlist, :url => url_for(:action => 'add_song', :controller => 'costumers'), :method => 'post', :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :reservation, collection: Reservation.from_client(current_client), label: 'Reserva'%>
+  <%= error_span(@playlist[:reservation]) %>
+  <%= f.association :song, label: 'Canción' %>
+  <%= error_span(@playlist[:song]) %>
+  <%= f.input :play_order, label: 'Orden Reproducción' %>
+  <%= error_span(@playlist[:play_order]) %>
+
+  <%= f.button :submit, 'Enviar Pedido', :class => 'btn-primary' %>
+
+<% end %>

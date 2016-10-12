@@ -4,9 +4,23 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+
+    <%= f.input :name, label: 'Nombre', autofocus: true %>
+    <%= error_span(@client[:name]) %>
+    <%= f.input :dni, label: 'DNI' %>
+    <%= error_span(@client[:dni]) %>
+    <%= f.input :birth, label: 'Fecha Nacimiento', start_year: Date.today.year - 90 %>
+    <%= error_span(@client[:birth]) %>
+    <%= f.input :phone, label: 'Teléfono' %>
+    <%= error_span(@client[:phone]) %>
+      
+    <%= f.input :email, label: 'Correo' %>
+    <%= error_span(@client[:email]) %>
+    <%= f.input :password, label: 'Contraseña', required: true, hint: ("Mínimo #{@minimum_password_length} carácteres" if @minimum_password_length) %>
+    <%= error_span(@client[:password]) %>
+    <%= f.input :password_confirmation, label: 'Confirmar Contraseña', required: true %>
+    <%= error_span(@client[:password_confirmation]) %>
+
   </div>
 
   <div class="form-actions">
