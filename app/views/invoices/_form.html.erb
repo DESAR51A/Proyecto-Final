@@ -1,15 +1,16 @@
-<%= simple_form_for(@invoice) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @invoice, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :fec_invoice %>
+  <%= error_span(@invoice[:fec_invoice]) %>
+  <%= f.input :num_ruc %>
+  <%= error_span(@invoice[:num_ruc]) %>
+  <%= f.input :nom_cliente %>
+  <%= error_span(@invoice[:nom_cliente]) %>
+  <%= f.input :val_invoice %>
+  <%= error_span(@invoice[:val_invoice]) %>
+  <%= f.association :reservation %>
+  <%= error_span(@invoice[:reservation]) %>
 
-  <div class="form-inputs">
-    <%= f.input :fec_invoice %>
-    <%= f.input :num_ruc %>
-    <%= f.input :nom_cliente %>
-    <%= f.input :val_invoice %>
-    <%= f.association :reservation %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                invoices_path, :class => 'btn btn-default' %>
 <% end %>

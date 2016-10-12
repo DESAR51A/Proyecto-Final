@@ -1,38 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Invoice Items</h1>
-
-<table>
+<%- model_class = InvoiceItem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Cod producto</th>
-      <th>Precio unit</th>
-      <th>Descuento</th>
-      <th>Cantidad</th>
-      <th>Costo</th>
-      <th>Invoice</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:cod_producto) %></th>
+      <th><%= model_class.human_attribute_name(:precio_unit) %></th>
+      <th><%= model_class.human_attribute_name(:descuento) %></th>
+      <th><%= model_class.human_attribute_name(:cantidad) %></th>
+      <th><%= model_class.human_attribute_name(:costo) %></th>
+      <th><%= model_class.human_attribute_name(:invoice_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @invoice_items.each do |invoice_item| %>
       <tr>
+        <td><%= link_to invoice_item.id, invoice_item_path(invoice_item) %></td>
         <td><%= invoice_item.cod_producto %></td>
         <td><%= invoice_item.precio_unit %></td>
         <td><%= invoice_item.descuento %></td>
         <td><%= invoice_item.cantidad %></td>
         <td><%= invoice_item.costo %></td>
-        <td><%= invoice_item.invoice %></td>
-        <td><%= link_to 'Show', invoice_invoice_item_path(@invoice, invoice_item) %></td>
-        <td><%= link_to 'Edit', edit_invoice_invoice_item_path(@invoice, invoice_item) %></td>
-        <td><%= link_to 'Destroy', invoice_invoice_item_path(@invoice, invoice_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= invoice_item.invoice_id %></td>
+        <td><%=l invoice_item.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_invoice_invoice_item_path(@invoice, invoice_item), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      invoice_invoice_item_path(@invoice, invoice_item),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Invoice item', new_invoice_invoice_item_path(@invoice) %>
-
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_invoice_item_path,
+            :class => 'btn btn-primary' %>

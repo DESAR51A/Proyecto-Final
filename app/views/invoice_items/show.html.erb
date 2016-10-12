@@ -1,34 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = InvoiceItem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Cod producto:</strong>
-  <%= @invoice_item.cod_producto %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:cod_producto) %>:</strong></dt>
+  <dd><%= @invoice_item.cod_producto %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:precio_unit) %>:</strong></dt>
+  <dd><%= @invoice_item.precio_unit %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:descuento) %>:</strong></dt>
+  <dd><%= @invoice_item.descuento %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cantidad) %>:</strong></dt>
+  <dd><%= @invoice_item.cantidad %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:costo) %>:</strong></dt>
+  <dd><%= @invoice_item.costo %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:invoice_id) %>:</strong></dt>
+  <dd><%= @invoice_item.invoice_id %></dd>
+</dl>
 
-<p>
-  <strong>Precio unit:</strong>
-  <%= @invoice_item.precio_unit %>
-</p>
-
-<p>
-  <strong>Descuento:</strong>
-  <%= @invoice_item.descuento %>
-</p>
-
-<p>
-  <strong>Cantidad:</strong>
-  <%= @invoice_item.cantidad %>
-</p>
-
-<p>
-  <strong>Costo:</strong>
-  <%= @invoice_item.costo %>
-</p>
-
-<p>
-  <strong>Invoice:</strong>
-  <%= @invoice_item.invoice %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_item_path(@invoice_item) %> |
-<%= link_to 'Back', invoice_items_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              invoice_items_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_invoice_item_path(@invoice_item), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              invoice_item_path(@invoice_item),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
