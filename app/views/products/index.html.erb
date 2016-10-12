@@ -12,11 +12,12 @@
 <table id="datatable" class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:Codigo) %></th>
-      <th><%= model_class.human_attribute_name(:Nombre) %></th>
+      <th>Codigo</th>
+      <th>Nombre%></th>
       <th>Categoria</th>
-      <th><%= model_class.human_attribute_name(:Precio) %></th>
-      <th><%= model_class.human_attribute_name(:Local) %></th>
+      <th>Precio S/.</th>
+      <th>Local</th>
+      <th>Estado</th>
       <th><%=t '.actions', :default => t("Acciones") %></th>
     </tr>
   </thead>
@@ -26,8 +27,9 @@
         <td><%= product.cod_product %></td>
         <td><%= product.nom_product %></td>
         <td><%= product.category_name %></td>
-        <td><%= number_to_currency product.price %></td>
+        <td><%= number_to_currency product.price, unit: "S/." %></td>
         <td><%= product.shop_name %></td>
+        <td><%= product.estado %></td>
         <td>
           <%= link_to t('.edit', :default => t("Editar")),
                       edit_product_path(product), :class => 'btn btn-default btn-xs' %>

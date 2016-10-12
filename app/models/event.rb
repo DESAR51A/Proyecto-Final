@@ -11,8 +11,19 @@
 class Event < ActiveRecord::Base
     has_many :reservations
     validates :nom_evento, presence: true
-    validates :nom_evento, uniqueness: true
+    validates :fecha, presence: true
+    validates :capacidad, presence: true
+    validates :descripcion, presence: true
+    
   def to_s
         self.nom_evento
   end
+
+  def fecha_dma
+    if self.fecha.present?
+        self.fecha.strftime("%d/%m/%Y")
+    end
+  end
+
+
 end

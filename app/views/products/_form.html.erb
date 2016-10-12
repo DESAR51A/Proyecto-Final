@@ -3,12 +3,16 @@
   <%= error_span(@product[:cod_product]) %>
   <%= f.input :nom_product, label: 'Nombre Producto' %>
   <%= error_span(@product[:nom_product]) %>
-  <%= f.input :price, label: 'Precio'%>
+  <%= f.input :price, label: 'Precio S/.'%>
   <%= error_span(@product[:price]) %>
   <%= f.association :category, label: 'Categoria' %>
   <%= error_span(@product[:category]) %>
   <%= f.association :shop, label: 'Local' %>
   <%= error_span(@product[:shop]) %>
+  <%= f.input :estado, collection: ["Disponible", "No Disponible"], label: 'Estado' %>
+  <%= error_span(@product[:estado]) %>
+  
+  
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("Cancelar")),
                 products_path, :class => 'btn btn-default' %>

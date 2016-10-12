@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011041150) do
+ActiveRecord::Schema.define(version: 20161012233226) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -83,9 +83,12 @@ ActiveRecord::Schema.define(version: 20161011041150) do
   add_index "employees", ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.string   "nom_evento", limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "nom_evento",  limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.datetime "fecha"
+    t.integer  "capacidad",   limit: 4
+    t.text     "descripcion", limit: 65535
   end
 
   create_table "genres", force: :cascade do |t|
